@@ -1,0 +1,28 @@
+.Card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.Card__Img {
+  max-width: 50%;
+}
+
+.Card__action {
+  align-self: stretch;
+  display: flex;
+  justify-content: center;
+}
+.Card__action button {
+  width: 50%;
+  padding: 0.5em;
+  background: transparent;
+  color: gray;
+  border: 2px solid grey;
+  transition: 0.5s ease-in all;
+}
+.Card__action button:hover {
+  cursor: pointer;
+  background: rgb(0, 0, 0);
+  color: rgb(209, 209, 209);
+  border: 2px solid black;
+}
