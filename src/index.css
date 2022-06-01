@@ -12,3 +12,7 @@ html {
   background: #FAF3DD;
   font-family: 'Amiri', serif;
 }
+
+.hidden{
+  display: none !important;
+}
