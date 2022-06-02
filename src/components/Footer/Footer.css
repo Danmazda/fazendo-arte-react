@@ -1,0 +1,10 @@
+footer ul {
+  background-color: burlywood;
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+}
+
+footer ul li {
+  list-style: none;
+}

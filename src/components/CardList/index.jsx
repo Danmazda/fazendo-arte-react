@@ -1,11 +1,23 @@
 import "./CardList.css";
 import Card from "../Card";
 import "./CardList.css";
-import products from "../../mock/products";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 const CardList = () => {
   const [action, setAction] = useState({ action: "", display: "hidden" });
   const [productCart, setProductCart] = useState([]);
+  const [products, setProducts] = useState([]);
+  const getProducts = async () => {
+    const request = await fetch("https://apifazendoarte-production.up.railway.app/aromatizador/all");
+    const response = await request.json();
+    setProducts(response);
+  };
+
+  //Mount component
+  useEffect(() => {
+    getProducts();
+  }, []);
+  
+
   const addProductToCart = (id) => {
     const index = productCart.findIndex((p) => p.id === id);
     if (index === -1) {
@@ -34,10 +46,10 @@ const CardList = () => {
         />
       ))}
       <div className="cart">
-        {productCart.map((p, index) => (
+        {productCart.map((product, index) => (
           <div key={index}>
-            <h3>{p.id}</h3>
-            <p>{p.quantity}</p>
+            <h3>{product.id}</h3>
+            <p>{product.quantity}</p>
           </div>
         ))}
       </div>
