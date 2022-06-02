@@ -1,0 +1,39 @@
+header {
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 2em;
+  gap: 1em;
+  justify-content: space-between;
+  background-color: burlywood;
+  height: 15vh;
+}
+header ul {
+  display: flex;
+  gap: 1em;
+}
+
+li a {
+  text-decoration: none;
+  color: black;
+  transition: 0.3s ease-in all;
+}
+li a:hover {
+  transform: scale(1.1);
+  border-bottom: 2px solid black;
+}
+header button {
+  background-color: transparent;
+  border: none;
+  border-left: 1px solid gray;
+  padding: 0 2em;
+  text-align: center;
+  height: 100%;
+}
+
+header button:hover {
+  cursor: pointer;
+  color: white;
+  background-color: gray;
+}

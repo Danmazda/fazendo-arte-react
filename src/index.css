@@ -16,3 +16,6 @@ html {
 .hidden{
   display: none !important;
 }
+li{
+  list-style: none;
+}
