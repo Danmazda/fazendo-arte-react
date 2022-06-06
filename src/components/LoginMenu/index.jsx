@@ -1,11 +1,16 @@
 import "./LoginMenu.css";
 import { apiRequestsUsers } from "../../services/api";
 import { AiFillCloseSquare } from "react-icons/ai";
-const LoginMenu = ({ loginOpen, setLoginOpen }) => {
+const LoginMenu = ({ loginOpen, setLoginOpen, isSignedIn, setIsSignedIn }) => {
   const submitHandler = async (event) => {
     event.preventDefault();
     const { email, password } = document.forms[0];
     await apiRequestsUsers.UserSignIn(email.value, password.value);
+    setIsSignedIn(true);
+  };
+  const logOutHandler = () => {
+    localStorage.clear();
+    setIsSignedIn(false);
   };
   return (
     <div className={`LoginMenu ${!loginOpen && "hidden"}`}>
@@ -15,17 +20,26 @@ const LoginMenu = ({ loginOpen, setLoginOpen }) => {
           setLoginOpen(false);
         }}
       ></AiFillCloseSquare>
-      <form onSubmit={submitHandler}>
-        <fieldset>
-          <label htmlFor="email">Email</label>
-          <input type="email" name="email" />
-        </fieldset>
-        <fieldset>
-          <label htmlFor="password">Senha</label>
-          <input type="password" name="password" />
-        </fieldset>
-        <button type="submit">Login</button>
-      </form>
+      {!isSignedIn ? (
+        <div>
+          <form onSubmit={submitHandler}>
+            <fieldset>
+              <label htmlFor="email">Email</label>
+              <input type="email" name="email" />
+            </fieldset>
+            <fieldset>
+              <label htmlFor="password">Senha</label>
+              <input type="password" name="password" />
+            </fieldset>
+            <button type="submit">Login</button>
+          </form>
+        </div>
+      ) : (
+        <div>
+          <h2>Logado como: {localStorage.email}</h2>
+          <button onClick={logOutHandler}>Deslogar</button>
+        </div>
+      )}
     </div>
   );
 };

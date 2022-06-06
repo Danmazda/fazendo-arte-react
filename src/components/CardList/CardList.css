@@ -5,6 +5,7 @@
   padding: 1em;
   position: relative;
   justify-content: center;
+  overflow-y: scroll;
 }
 
 .modal{

@@ -30,7 +30,7 @@ export const apiRequestsProducts = {
 
 export const apiRequestsUsers = {
   async getUsers() {},
-  async getUserByEmail() {
+  async getUserCart() {
     try {
       const email = localStorage.getItem("email");
       const response = await api.post("usuario/email", { email });

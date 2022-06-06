@@ -1,11 +1,14 @@
-footer ul {
+footer {
   width: 100%;
   position: absolute;
-  bottom: 0;
+  bottom: -2em;
   background-color: burlywood;
+  align-self: flex-end;
+  z-index: 1;
+}
+
+footer ul {
   display: flex;
   justify-content: center;
   gap: 1em;
-  align-self: flex-end;
 }
-

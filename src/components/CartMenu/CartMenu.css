@@ -10,7 +10,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  z-index: 1;
+  z-index: 3;
 }
 .bag:hover {
   cursor: pointer;
@@ -28,4 +28,5 @@
   height: 80vh;
   width: 50vw;
   border-radius: 0.5em;
+  z-index: 2;
 }
