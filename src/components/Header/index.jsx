@@ -1,5 +1,6 @@
 import "./Header.css";
-const Header = ({ getSearch }) => {
+import { AiOutlineSearch } from "react-icons/ai";
+const Header = ({ getSearch, setLoginOpen }) => {
   return (
     <header>
       <div className="title">
@@ -20,9 +21,21 @@ const Header = ({ getSearch }) => {
         </ul>
       </nav>
       <fieldset>
-        <input type="text" name="search" onChange={getSearch} placeholder="Pesquise por nome"/>
+        <AiOutlineSearch />
+        <input
+          type="text"
+          name="search"
+          onChange={getSearch}
+          placeholder="Pesquise por nome"
+        />
       </fieldset>
-      <button>Login</button>
+      <button
+        onClick={() => {
+          setLoginOpen(true);
+        }}
+      >
+        Login
+      </button>
     </header>
   );
 };

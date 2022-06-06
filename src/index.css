@@ -5,12 +5,19 @@
   box-sizing: border-box;
 }
 
+
 body,
-html {
+html{
   width: 100%;
   min-height: 100vh;
   background: #FAF3DD;
   font-family: 'Amiri', serif;
+}
+
+.Home{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 
@@ -26,3 +33,30 @@ fieldset{
 textarea:focus, input:focus{
   outline: none;
 }
+
+button:hover{
+  cursor: pointer;
+}
+
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #3b730c #ffffff;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 16px;
+    position: absolute;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #3b730c;
+    border-radius: 4px;
+    border: 3px double #ffffff;
+  }

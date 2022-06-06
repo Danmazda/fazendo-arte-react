@@ -1,6 +1,4 @@
 #CardList {
-  /* display: flex;
-  justify-content: center; */
   display: flex;
   flex-wrap: wrap;
   gap: 1em;

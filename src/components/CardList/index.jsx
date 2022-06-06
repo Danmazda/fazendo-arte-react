@@ -1,37 +1,24 @@
 import "./CardList.css";
 import Card from "../Card";
-import "./CardList.css";
+import { apiRequestsProducts } from "../../services/api";
 import { useState, useEffect } from "react";
 const CardList = ({ searchQuery }) => {
   const [message, setMessage] = useState({ message: "", display: "hidden" });
-  const [productCart, setProductCart] = useState([]);
   const [products, setProducts] = useState([]);
   const getProducts = async () => {
-    const request = await fetch(
-      "https://apifazendoarte-production.up.railway.app/aromatizador/all"
-    );
-    const response = await request.json();
-    response.sort((a, b) => {
-      console.log(a.fragrance);
-      return a.fragrance.localeCompare(b.fragrance);
-    });
-    setProducts(response);
+    try {
+      const data = await apiRequestsProducts.getProducts();
+      setProducts(data);
+    } catch (error) {
+      console.error(error.message);
+    }
   };
   //Mount component
   useEffect(() => {
     getProducts();
   }, []);
 
-  const addProductToCart = (id) => {
-    const index = productCart.findIndex((p) => p.id === id);
-    if (index === -1) {
-      const toAdd = { id, quantity: 1 };
-      productCart.push(toAdd);
-    } else {
-      productCart[index].quantity += 1;
-    }
-    setProductCart([...productCart]);
-  };
+  const addProductToCart = (id) => {};
 
   const showMessage = (message) => {
     setMessage({ message, display: "" });
@@ -56,15 +43,6 @@ const CardList = ({ searchQuery }) => {
           return <span key={index}></span>;
         }
       })}
-
-      <div className="cart">
-        {productCart.map((product, index) => (
-          <div key={index}>
-            <h3>{product.id}</h3>
-            <p>{product.quantity}</p>
-          </div>
-        ))}
-      </div>
     </section>
   );
 };

@@ -1,0 +1,44 @@
+.LoginMenu {
+  position: absolute;
+  background-color: azure;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-shadow: 5px 5px 4px -3px #000000;
+  box-shadow: 5px 5px 4px -3px #000000;
+}
+
+.LoginMenu form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+}
+
+.LoginMenu fieldset {
+  display: flex;
+  gap: 0.5em;
+}
+.LoginMenu button {
+  padding: 0.3em;
+  border: none;
+  background-color: cadetblue;
+}
+.LoginMenu button:hover {
+  transform: scale(1.1);
+}
+.LoginMenu button:active {
+  transform: scale(0.9);
+}
+.cancel {
+  align-self: flex-end;
+  font-size: 1.3em;
+}
+.cancel:hover {
+  cursor: pointer;
+  color: red;
+}
