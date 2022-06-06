@@ -1,6 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import Home from "./components/Home";
+import Home from "./views/Home";
 import "./index.css";
 const container = document.getElementById("root");
 const root = createRoot(container);

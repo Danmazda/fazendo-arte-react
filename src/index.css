@@ -13,9 +13,16 @@ html {
   font-family: 'Amiri', serif;
 }
 
+
 .hidden{
   display: none !important;
 }
 li{
   list-style: none;
+}
+fieldset{
+  border: none;
+}
+textarea:focus, input:focus{
+  outline: none;
 }

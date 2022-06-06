@@ -37,3 +37,8 @@ header button:hover {
   color: white;
   background-color: gray;
 }
+
+header input{
+  padding: 0.2em;
+  border: none;
+}

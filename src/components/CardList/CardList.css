@@ -1,11 +1,12 @@
 #CardList {
   /* display: flex;
   justify-content: center; */
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: 1em;
   padding: 1em;
   position: relative;
+  justify-content: center;
 }
 
 .modal{

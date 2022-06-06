@@ -2,21 +2,25 @@ import "./CardList.css";
 import Card from "../Card";
 import "./CardList.css";
 import { useState, useEffect } from "react";
-const CardList = () => {
-  const [action, setAction] = useState({ action: "", display: "hidden" });
+const CardList = ({ searchQuery }) => {
+  const [message, setMessage] = useState({ message: "", display: "hidden" });
   const [productCart, setProductCart] = useState([]);
   const [products, setProducts] = useState([]);
   const getProducts = async () => {
-    const request = await fetch("https://apifazendoarte-production.up.railway.app/aromatizador/all");
+    const request = await fetch(
+      "https://apifazendoarte-production.up.railway.app/aromatizador/all"
+    );
     const response = await request.json();
+    response.sort((a, b) => {
+      console.log(a.fragrance);
+      return a.fragrance.localeCompare(b.fragrance);
+    });
     setProducts(response);
   };
-
   //Mount component
   useEffect(() => {
     getProducts();
   }, []);
-  
 
   const addProductToCart = (id) => {
     const index = productCart.findIndex((p) => p.id === id);
@@ -28,23 +32,31 @@ const CardList = () => {
     }
     setProductCart([...productCart]);
   };
-  const showAction = (action) => {
-    setAction({ action, display: "" });
+
+  const showMessage = (message) => {
+    setMessage({ message, display: "" });
     setTimeout(() => {
-      setAction({ action: "", display: "hidden" });
+      setMessage({ message: "", display: "hidden" });
     }, 2000);
   };
   return (
     <section id="CardList">
-      <div className={`modal ${action.display}`}>{action.action}</div>
-      {products.map((pr, index) => (
-        <Card
-          {...pr}
-          key={index}
-          addItem={addProductToCart}
-          showAction={showAction}
-        />
-      ))}
+      <div className={`modal ${message.display}`}>{message.message}</div>
+      {products.map((pr, index) => {
+        if (searchQuery.test(pr.fragrance)) {
+          return (
+            <Card
+              {...pr}
+              key={index}
+              addItem={addProductToCart}
+              showMessage={showMessage}
+            />
+          );
+        } else {
+          return <span key={index}></span>;
+        }
+      })}
+
       <div className="cart">
         {productCart.map((product, index) => (
           <div key={index}>
