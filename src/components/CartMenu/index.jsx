@@ -1,14 +1,19 @@
 import "./CartMenu.css";
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import { BsBag } from "react-icons/bs";
 import { apiRequestsUsers } from "../../services/api";
-import {AiOutlinePlusCircle, AiFillMinusCircle} from "react-icons/ai";
+import {AiOutlinePlusCircle, AiOutlineMinusCircle} from "react-icons/ai";
 const CartMenu = ({ cart, setCart, isSignedIn }) => {
   const [cartMenuOpen, setCartMenuOpen] = useState(false);
   const getCart = async () => {
     const data = await apiRequestsUsers.getUserCart();
     setCart(data);
   };
+  useEffect(()=>{
+    if(isSignedIn){
+      getCart();
+    }
+  }); 
   return (
     <section>
       {isSignedIn && (
@@ -17,7 +22,6 @@ const CartMenu = ({ cart, setCart, isSignedIn }) => {
             className="bag"
             onClick={() => {
               setCartMenuOpen(!cartMenuOpen);
-              getCart();
             }}
           >
             <BsBag></BsBag>
@@ -32,7 +36,7 @@ const CartMenu = ({ cart, setCart, isSignedIn }) => {
                     <div className="cartItem__control">
                     <AiOutlinePlusCircle/>
                       <p>{element.quantity}</p>
-                    <AiFillMinusCircle/>
+                    <AiOutlineMinusCircle/>
                     </div>
                   </div>
                 );

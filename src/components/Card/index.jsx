@@ -6,7 +6,7 @@ const Card = ({
   image,
   price,
   _id,
-  addItem,
+  addProductToCart,
   showMessage,
 }) => {
   const [showBt, setShowBt] = useState(false);
@@ -31,7 +31,7 @@ const Card = ({
 
           <button
             onClick={() => {
-              addItem(_id);
+              addProductToCart(_id);
               showMessage(`${fragrance} adicionado ao carrinho.`);
             }}
           >
