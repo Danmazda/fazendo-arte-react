@@ -1,15 +1,27 @@
 import "./Card.css";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { CartContext } from "../../views/Home";
+import { cartActions } from "../../services/actions";
+
 const Card = ({
   fragrance,
   description,
   image,
   price,
   _id,
-  addProductToCart,
   showMessage,
+  products,
 }) => {
   const [showBt, setShowBt] = useState(false);
+  const { cart, cartDispatch } = useContext(CartContext);
+  const addProductToCart = (id) => {
+    const find = cart.find((p) => p.product._id === id);
+    if (!find) {
+      cartDispatch({ type: cartActions.ADDNEW, id, products });
+    } else {
+      cartDispatch({ type: cartActions.ADD, id });
+    }
+  };
   return (
     <div
       className="Card"

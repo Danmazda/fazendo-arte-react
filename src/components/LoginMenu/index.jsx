@@ -1,7 +1,10 @@
 import "./LoginMenu.css";
 import { apiRequestsUsers } from "../../services/api";
 import { AiFillCloseSquare } from "react-icons/ai";
-const LoginMenu = ({ loginOpen, setLoginOpen, isSignedIn, setIsSignedIn }) => {
+import { LoginContext } from '../../views/Home';
+import { useContext } from 'react';
+const LoginMenu = ({ loginOpen, setLoginOpen }) => {
+  const {isSignedIn, setIsSignedIn} = useContext(LoginContext);
   const submitHandler = async (event) => {
     event.preventDefault();
     const { email, password } = document.forms[0];

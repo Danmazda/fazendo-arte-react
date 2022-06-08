@@ -1,7 +1,7 @@
 import "./CardList.css";
 import Card from "../Card";
 import { apiRequestsProducts } from "../../services/api";
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
 const CardList = ({ searchQuery }) => {
   const [message, setMessage] = useState({ message: "", display: "hidden" });
   const [products, setProducts] = useState([]);
@@ -18,8 +18,6 @@ const CardList = ({ searchQuery }) => {
     getProducts();
   }, []);
 
-  const addProductToCart = (id) => {};
-
   const showMessage = (message) => {
     setMessage({ message, display: "" });
     setTimeout(() => {
@@ -35,8 +33,8 @@ const CardList = ({ searchQuery }) => {
             <Card
               {...pr}
               key={index}
-              addProductToCart={addProductToCart}
               showMessage={showMessage}
+              products={products}
             />
           );
         } else {
