@@ -16,15 +16,18 @@ const Home = () => {
   useEffect(() => {
     if (localStorage.length !== 0) {
       setIsSignedIn(true);
+    } else{
+      setIsSignedIn(false);
     }
-  },[]);
+      },[]);
 
   return (
     <div className="Home">
-      <Header getSearch={getSearch} setLoginOpen={setLoginOpen}></Header>
-      <LoginMenu loginOpen={loginOpen} setLoginOpen={setLoginOpen} isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn}></LoginMenu>
-      <CardList searchQuery={searchQuery}></CardList>
-      <CartMenu cart={cart} setCart={setCart} isSignedIn={isSignedIn}></CartMenu>
+          <Header getSearch={getSearch} setLoginOpen={setLoginOpen}></Header>
+          <LoginMenu loginOpen={loginOpen} setLoginOpen={setLoginOpen} isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn}></LoginMenu>
+          <CardList searchQuery={searchQuery}></CardList>
+          <CartMenu cart={cart} setCart={setCart} isSignedIn={isSignedIn}></CartMenu>
+
       <Footer></Footer>
     </div>
   );

@@ -5,7 +5,6 @@ const api = axios.create({
 });
 
 api.interceptors.request.use(async (config) => {
-  // Declaramos um token manualmente para teste.
   const token = localStorage.getItem("access_token");
   if (token) {
     api.defaults.headers.authorization = `Bearer ${token}`;
@@ -33,9 +32,12 @@ export const apiRequestsUsers = {
   async getUserCart() {
     try {
       const email = localStorage.getItem("email");
-      const response = await api.post("usuario/email", { email });
-      const { data } = response;
-      return data.cart;
+      if(email){
+        const response = await api.post("usuario/email", { email });
+        const { data } = response;
+        return data;
+      }
+      
     } catch (error) {
       console.log(error.message);
     }

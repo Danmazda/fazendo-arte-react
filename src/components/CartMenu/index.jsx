@@ -7,9 +7,15 @@ const CartMenu = ({ cart, setCart, isSignedIn }) => {
   const [cartMenuOpen, setCartMenuOpen] = useState(false);
   const getCart = async () => {
     const data = await apiRequestsUsers.getUserCart();
-    setCart(data);
+    const {cart} = data;
+    if(cart){
+      setCart(cart);
+    }else{
+      console.log(data);
+    }
   };
   useEffect(()=>{
+    console.log(isSignedIn);
     if(isSignedIn){
       getCart();
     }

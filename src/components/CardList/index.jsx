@@ -35,7 +35,7 @@ const CardList = ({ searchQuery }) => {
             <Card
               {...pr}
               key={index}
-              addItem={addProductToCart}
+              addProductToCart={addProductToCart}
               showMessage={showMessage}
             />
           );
