@@ -1,25 +1,27 @@
 import "./CartMenu.css";
-import { useState, useEffect} from "react";
+import { useState, useEffect, useCallback} from "react";
 import { BsBag } from "react-icons/bs";
 import { apiRequestsUsers } from "../../services/api";
 import {AiOutlinePlusCircle, AiOutlineMinusCircle} from "react-icons/ai";
 const CartMenu = ({ cart, setCart, isSignedIn }) => {
   const [cartMenuOpen, setCartMenuOpen] = useState(false);
-  const getCart = async () => {
-    const data = await apiRequestsUsers.getUserCart();
-    const {cart} = data;
-    if(cart){
-      setCart(cart);
-    }else{
-      console.log(data);
-    }
-  };
+  const getCart = useCallback(
+    async () => {
+      const data = await apiRequestsUsers.getUserCart();
+      const {cart} = data;
+      if(cart){
+        setCart(cart);
+      }else{
+        console.log(data);
+      }
+    }, [setCart]
+  );
   useEffect(()=>{
     console.log(isSignedIn);
     if(isSignedIn){
       getCart();
     }
-  }); 
+  }, [isSignedIn, getCart]); 
   return (
     <section>
       {isSignedIn && (

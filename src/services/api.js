@@ -30,17 +30,11 @@ export const apiRequestsProducts = {
 export const apiRequestsUsers = {
   async getUsers() {},
   async getUserCart() {
-    try {
       const email = localStorage.getItem("email");
-      if(email){
         const response = await api.post("usuario/email", { email });
         const { data } = response;
         return data;
-      }
       
-    } catch (error) {
-      console.log(error.message);
-    }
   },
   async UserSignIn(email, password) {
     try {
