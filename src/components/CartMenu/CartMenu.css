@@ -41,20 +41,3 @@
   height: 100%;
 }
 
-.cartItem{
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
-  background-color: burlywood;
-  width: 100%;
-  padding: 0.5em;
-  border-radius:0.5em;
-}
-.cartItem__image{
-  max-width: 5em;
-}
-.cartItem__control{
-  align-items: center ;
-  display: flex;
-  gap: 0.2em;
-}
