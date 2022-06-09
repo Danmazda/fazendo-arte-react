@@ -1,7 +1,8 @@
 import "./SignupMenu.css";
 import { AiFillCloseSquare } from "react-icons/ai";
 import { useContext } from "react";
-import { LoginContext, MessageContext } from "../../views/Home";
+import {  MessageContext } from "../../views/Home/Home";
+import { LoginContext } from '../../Contexts/LoginProvider';
 import { apiRequestsUsers } from "../../services/api";
 const SignupMenu = ({ loginOpen, setLoginOpen, signupOpen, setSignupOpen }) => {
   const { isSignedIn } = useContext(LoginContext);

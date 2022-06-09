@@ -1,21 +1,20 @@
 import "../../styles/main.css";
-import { useEffect, useState, useReducer, createContext } from "react";
-import LoginMenu from "../../components/LoginMenu";
+import { useState, useReducer, createContext } from "react";
+import LoginMenu from "../../components/LoginMenu/LoginMenu";
 import Header from "../../components/Header";
 import CardList from "../../components/CardList";
 import Footer from "../../components/Footer";
-import CartMenu from "../../components/CartMenu";
+import CartMenu from "../../components/CartMenu/CartMenu";
 import MessageModal from "../../components/Modals/MessageModal/MessageModal";
 import SignupMenu from "../../components/SignupMenu/SingupMenu";
+import LoginProvider from '../../Contexts/LoginProvider';
 import { cartReducer } from "../../services/reducers";
 
 export const MessageContext = createContext();
 export const CartContext = createContext();
-export const LoginContext = createContext();
 const Home = () => {
   const [loginOpen, setLoginOpen] = useState(false);
   const [signupOpen, setSignupOpen] = useState(false);
-  const [isSignedIn, setIsSignedIn] = useState(false);
   const [message, setMessage] = useState({ message: "", show: "" });
   const [cart, cartDispatch] = useReducer(cartReducer, []);
   const [searchQuery, setSearchQuery] = useState(new RegExp("", "i"));
@@ -28,20 +27,14 @@ const Home = () => {
   const getSearch = (event) => {
     setSearchQuery(new RegExp(`${event.target.value}`, "i"));
   };
-  useEffect(() => {
-    if (localStorage.length !== 0) {
-      setIsSignedIn(true);
-    } else {
-      setIsSignedIn(false);
-    }
-  }, []);
+ 
 
   return (
     <div className="Home">
       <Header getSearch={getSearch} setLoginOpen={setLoginOpen}></Header>
       <MessageContext.Provider value={{ message, setMessage, showMessage }}>
         <MessageModal></MessageModal>
-        <LoginContext.Provider value={{ isSignedIn, setIsSignedIn }}>
+        <LoginProvider>
           <SignupMenu
             loginOpen={loginOpen}
             setLoginOpen={setLoginOpen}
@@ -60,7 +53,7 @@ const Home = () => {
             <CardList searchQuery={searchQuery}></CardList>
             <CartMenu></CartMenu>
           </CartContext.Provider>
-        </LoginContext.Provider>
+        </LoginProvider>
       </MessageContext.Provider>
       <Footer></Footer>
     </div>

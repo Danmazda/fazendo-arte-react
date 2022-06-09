@@ -1,6 +1,14 @@
 import "./Header.css";
+import { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 import { AiOutlineSearch } from "react-icons/ai";
 const Header = ({ getSearch, setLoginOpen }) => {
+  const [isAdmin, setIsAdmin] = useState(false);
+  useEffect(() => {
+    if (localStorage.getItem("adm")) {
+      setIsAdmin(true);
+    }
+  }, []);
   return (
     <header>
       <div className="title">
@@ -9,6 +17,7 @@ const Header = ({ getSearch, setLoginOpen }) => {
       </div>
       <nav>
         <ul>
+          <Link to="/">Início</Link>
           <li>
             <a href="#Products">Produtos</a>
           </li>
@@ -18,6 +27,9 @@ const Header = ({ getSearch, setLoginOpen }) => {
           <li>
             <a href="#Mail">Contato</a>
           </li>
+          {isAdmin && (
+            <Link to="/admin">Admin</Link>
+          )}
         </ul>
       </nav>
       <fieldset>

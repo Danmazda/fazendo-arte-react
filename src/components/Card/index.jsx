@@ -1,6 +1,6 @@
 import "./Card.css";
 import { useState, useContext } from "react";
-import { CartContext, MessageContext } from "../../views/Home";
+import { CartContext, MessageContext } from "../../views/Home/Home";
 import { cartActions } from "../../services/actions";
 
 const Card = ({

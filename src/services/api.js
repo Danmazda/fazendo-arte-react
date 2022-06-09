@@ -31,32 +31,31 @@ export const apiRequestsUsers = {
   async getUsers() {},
   async getUserByEmail() {
     const email = localStorage.getItem("email");
-    api
-      .post("usuario/email", { email })
-      .then((r) => {
-        return r.data;
-      })
-      .catch((e) => {
-        console.log(e.response.data);
-      });
+    try {
+      const response = await api.post("usuario/email", { email });
+      return response.data;
+    } catch (e) {
+      console.log(e.response.data);
+    }
   },
   async UserSignIn(email, password) {
-    const response = await api.post("usuario/signin", { email, password });
-    const { data } = response;
-    const { token } = data;
-    const emailRes = data.email;
-    if (!token || !emailRes) {
-      console.log(data);
-    } else {
-      localStorage.setItem("access_token", data.token);
-      localStorage.setItem("email", data.email);
-      api.interceptors.request.use(async (config) => {
-        const token = localStorage.getItem("access_token");
-        if (token) {
+    try {
+      const response = await api.post("usuario/signin", { email, password });
+      const { token, adm } = response.data;
+      const emailRes = response.data.email;
+      if (!token || !emailRes) {
+        console.log("error missing email or token");
+      } else {
+        localStorage.setItem("access_token", token);
+        localStorage.setItem("email", emailRes);
+        localStorage.setItem("adm", adm);
+        api.interceptors.request.use(async (config) => {
           api.defaults.headers.authorization = `Bearer ${token}`;
-        }
-        return config;
-      });
+          return config;
+        });
+      }
+    } catch (e) {
+      console.log(e.response.data);
     }
   },
   async UserSignUp(name, email, password) {
