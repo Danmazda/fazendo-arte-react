@@ -5,8 +5,10 @@ const LoginProvider = ({ children }) => {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [isAdm, setIsAdm] = useState(false);
   useEffect(() => {
-    if (localStorage.getItem("adm")) {
+    if (isSignedIn && localStorage.getItem("adm")) {
       setIsAdm(true);
+    } else {
+      setIsAdm(false);
     }
   }, [isSignedIn]);
   useEffect(() => {

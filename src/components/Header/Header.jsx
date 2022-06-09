@@ -1,14 +1,10 @@
 import "./Header.css";
-import { useState, useEffect } from "react";
+import {  useContext } from "react";
+import { LoginContext } from '../../Contexts/LoginProvider';
 import { Link } from 'react-router-dom';
 import { AiOutlineSearch } from "react-icons/ai";
 const Header = ({ getSearch, setLoginOpen }) => {
-  const [isAdmin, setIsAdmin] = useState(false);
-  useEffect(() => {
-    if (localStorage.getItem("adm")) {
-      setIsAdmin(true);
-    }
-  }, []);
+  const { isAdm } = useContext(LoginContext);
   return (
     <header>
       <div className="title">
@@ -27,7 +23,7 @@ const Header = ({ getSearch, setLoginOpen }) => {
           <li>
             <a href="#Mail">Contato</a>
           </li>
-          {isAdmin && (
+          {isAdm && (
             <Link to="/admin">Admin</Link>
           )}
         </ul>

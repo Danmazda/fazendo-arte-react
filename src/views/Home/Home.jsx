@@ -31,10 +31,11 @@ const Home = () => {
 
   return (
     <main className="Home">
-      <Header getSearch={getSearch} setLoginOpen={setLoginOpen}></Header>
       <MessageContext.Provider value={{ message, setMessage, showMessage }}>
         <MessageModal></MessageModal>
         <LoginProvider>
+      <Header getSearch={getSearch} setLoginOpen={setLoginOpen}></Header>
+
           <SignupMenu
             loginOpen={loginOpen}
             setLoginOpen={setLoginOpen}
