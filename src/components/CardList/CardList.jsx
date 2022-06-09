@@ -1,5 +1,5 @@
 import "./CardList.css";
-import Card from "../Card";
+import Card from "../Card/Card";
 import { apiRequestsProducts } from "../../services/api";
 import { useState, useEffect} from "react";
 const CardList = ({ searchQuery }) => {

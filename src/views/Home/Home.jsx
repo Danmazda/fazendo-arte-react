@@ -1,9 +1,9 @@
 import "../../styles/main.css";
 import { useState, useReducer, createContext } from "react";
 import LoginMenu from "../../components/LoginMenu/LoginMenu";
-import Header from "../../components/Header";
-import CardList from "../../components/CardList";
-import Footer from "../../components/Footer";
+import Header from "../../components/Header/Header";
+import CardList from "../../components/CardList/CardList";
+import Footer from "../../components/Footer/Footer";
 import CartMenu from "../../components/CartMenu/CartMenu";
 import MessageModal from "../../components/Modals/MessageModal/MessageModal";
 import SignupMenu from "../../components/SignupMenu/SingupMenu";
@@ -30,7 +30,7 @@ const Home = () => {
  
 
   return (
-    <div className="Home">
+    <main className="Home">
       <Header getSearch={getSearch} setLoginOpen={setLoginOpen}></Header>
       <MessageContext.Provider value={{ message, setMessage, showMessage }}>
         <MessageModal></MessageModal>
@@ -56,7 +56,7 @@ const Home = () => {
         </LoginProvider>
       </MessageContext.Provider>
       <Footer></Footer>
-    </div>
+    </main>
   );
 };
 
