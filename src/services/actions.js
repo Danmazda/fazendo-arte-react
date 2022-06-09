@@ -4,3 +4,8 @@ export const cartActions ={
   REMOVE: "REMOVE",
   REMOVEALL: "REMOVEALL"
 }
+export const messageActions = {
+  ERROR: "ERROR",
+  SUCCESS: "SUCCESS",
+  CONFIRM: "CONFIRM"
+};

@@ -38,7 +38,7 @@ const CartMenu = () => {
           </div>
           <div className={`cartMenu ${!cartMenuOpen && "hidden"}`}>
             <ul>
-              {cart.map((element, index) => <CartItem index={index} element={element}/>)}
+              {cart.map((element, index) => <CartItem key={index} element={element}/>)}
             </ul>
           </div>
         </div>

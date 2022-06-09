@@ -1,6 +1,6 @@
 import "./Card.css";
 import { useState, useContext } from "react";
-import { CartContext } from "../../views/Home";
+import { CartContext, MessageContext } from "../../views/Home";
 import { cartActions } from "../../services/actions";
 
 const Card = ({
@@ -9,11 +9,11 @@ const Card = ({
   image,
   price,
   _id,
-  showMessage,
   products,
 }) => {
   const [showBt, setShowBt] = useState(false);
   const { cart, cartDispatch } = useContext(CartContext);
+  const { showMessage} = useContext(MessageContext);
   const addProductToCart = (id) => {
     const find = cart.find((p) => p.product._id === id);
     if (!find) {
@@ -44,7 +44,8 @@ const Card = ({
           <button
             onClick={() => {
               addProductToCart(_id);
-              showMessage(`${fragrance} adicionado ao carrinho.`);
+              showMessage(`${fragrance} adicionada ao carrinho.`);
+              
             }}
           >
             Comprar
