@@ -3,7 +3,7 @@ import { apiRequestsUsers } from "../../services/api";
 import { AiFillCloseSquare } from "react-icons/ai";
 import { LoginContext } from '../../views/Home';
 import { useContext } from 'react';
-const LoginMenu = ({ loginOpen, setLoginOpen }) => {
+const LoginMenu = ({ loginOpen, setLoginOpen, setSignupOpen }) => {
   const {isSignedIn, setIsSignedIn} = useContext(LoginContext);
   const submitHandler = async (event) => {
     event.preventDefault();
@@ -28,13 +28,20 @@ const LoginMenu = ({ loginOpen, setLoginOpen }) => {
           <form onSubmit={submitHandler}>
             <fieldset>
               <label htmlFor="email">Email</label>
-              <input type="email" name="email" />
+              <input type="email" name="email" required/>
             </fieldset>
             <fieldset>
               <label htmlFor="password">Senha</label>
-              <input type="password" name="password" />
+              <input type="password" name="password" required/>
             </fieldset>
             <button type="submit">Login</button>
+            <button type='button' onClick={
+              ()=>{
+              setSignupOpen(true);
+              setLoginOpen(false);
+
+              }
+            }>Cadastre-se</button>
           </form>
         </div>
       ) : (

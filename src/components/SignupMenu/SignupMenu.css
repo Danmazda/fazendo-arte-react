@@ -1,0 +1,38 @@
+.SignupMenu {
+  position: absolute;
+  background-color: azure;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-shadow: 5px 5px 4px -3px #000000;
+  box-shadow: 5px 5px 4px -3px #000000;
+}
+
+.SignupMenu form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5em;
+}
+
+.SignupMenu input {
+  width: 100%;
+}
+
+.SignupMenu fieldset {
+  width: 100%;
+}
+.SignupMenu button {
+  padding: 0.3em;
+  border: none;
+  background-color: cadetblue;
+}
+.SignupMenu button:hover {
+  transform: scale(1.1);
+}
+.SignupMenu button:active {
+  transform: scale(0.9);
+}

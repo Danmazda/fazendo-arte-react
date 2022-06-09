@@ -6,6 +6,7 @@ import CardList from "../../components/CardList";
 import Footer from "../../components/Footer";
 import CartMenu from "../../components/CartMenu";
 import MessageModal from "../../components/Modals/MessageModal/MessageModal";
+import SignupMenu from "../../components/SignupMenu/SingupMenu";
 import { cartReducer } from "../../services/reducers";
 
 export const MessageContext = createContext();
@@ -13,14 +14,15 @@ export const CartContext = createContext();
 export const LoginContext = createContext();
 const Home = () => {
   const [loginOpen, setLoginOpen] = useState(false);
+  const [signupOpen, setSignupOpen] = useState(false);
   const [isSignedIn, setIsSignedIn] = useState(false);
-  const [message, setMessage] = useState({message: "", show: ""});
+  const [message, setMessage] = useState({ message: "", show: "" });
   const [cart, cartDispatch] = useReducer(cartReducer, []);
   const [searchQuery, setSearchQuery] = useState(new RegExp("", "i"));
   const showMessage = (message) => {
-    setMessage({message, show: 'show'});
+    setMessage({ message, show: "show" });
     setTimeout(() => {
-      setMessage({message: "", show: ""})
+      setMessage({ message: "", show: "" });
     }, 5000);
   };
   const getSearch = (event) => {
@@ -39,13 +41,21 @@ const Home = () => {
       <Header getSearch={getSearch} setLoginOpen={setLoginOpen}></Header>
       <MessageContext.Provider value={{ message, setMessage, showMessage }}>
         <MessageModal></MessageModal>
-
         <LoginContext.Provider value={{ isSignedIn, setIsSignedIn }}>
-          <CartContext.Provider value={{ cart, cartDispatch }}>
-            <LoginMenu
+          <SignupMenu
+            loginOpen={loginOpen}
+            setLoginOpen={setLoginOpen}
+            signupOpen={signupOpen}
+            setSignupOpen={setSignupOpen}
+          ></SignupMenu>
+          <LoginMenu
               loginOpen={loginOpen}
               setLoginOpen={setLoginOpen}
+              signupOpen={signupOpen}
+              setSignupOpen={setSignupOpen}
             ></LoginMenu>
+          <CartContext.Provider value={{ cart, cartDispatch }}>
+            
 
             <CardList searchQuery={searchQuery}></CardList>
             <CartMenu></CartMenu>
