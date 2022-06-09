@@ -1,5 +1,5 @@
 import "./MessageModal.css";
-import {MessageContext} from "../../../views/Home/Home";
+import { MessageContext } from '../../../Contexts/MessageProvider';
 import { useContext } from "react";
 
 const MessageModal = () => {

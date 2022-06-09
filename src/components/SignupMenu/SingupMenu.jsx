@@ -1,11 +1,13 @@
 import "./SignupMenu.css";
 import { AiFillCloseSquare } from "react-icons/ai";
 import { useContext } from "react";
-import {  MessageContext } from "../../views/Home/Home";
-import { LoginContext } from '../../Contexts/LoginProvider';
+import { MessageContext } from '../../Contexts/MessageProvider';
+import { LoginContext } from "../../Contexts/LoginProvider";
 import { apiRequestsUsers } from "../../services/api";
 const SignupMenu = ({ loginOpen, setLoginOpen, signupOpen, setSignupOpen }) => {
   const { isSignedIn } = useContext(LoginContext);
+  const c1 = useContext(MessageContext);
+  console.log(c1);
   const { showMessage } = useContext(MessageContext);
   const submitHandler = async (event) => {
     event.preventDefault();
