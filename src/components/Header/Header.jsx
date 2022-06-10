@@ -55,7 +55,6 @@ const Header = ({ getSearch }) => {
       <LoginMenu
         loginOpen={loginOpen}
         setLoginOpen={setLoginOpen}
-        signupOpen={signupOpen}
         setSignupOpen={setSignupOpen}
       ></LoginMenu>
     </header>

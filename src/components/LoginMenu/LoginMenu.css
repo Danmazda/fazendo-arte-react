@@ -34,11 +34,4 @@
 .LoginMenu button:active {
   transform: scale(0.9);
 }
-.cancel {
-  align-self: flex-end;
-  font-size: 1.3em;
-}
-.cancel:hover {
-  cursor: pointer;
-  color: red;
-}
+

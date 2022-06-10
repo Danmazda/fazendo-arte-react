@@ -46,6 +46,15 @@ button:hover {
 .clickable:hover {
   cursor: pointer;
 }
+.cancel {
+  align-self: flex-end;
+  font-size: 1.3em;
+}
+.cancel:hover {
+  cursor: pointer;
+  color: red;
+}
+
 /* ===== Scrollbar CSS ===== */
 /* Firefox */
 * {

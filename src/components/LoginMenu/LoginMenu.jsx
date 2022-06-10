@@ -17,12 +17,10 @@ const LoginMenu = ({ loginOpen, setLoginOpen, setSignupOpen }) => {
   };
   return (
     <div className={`LoginMenu ${!loginOpen && "hidden"}`}>
-      <AiFillCloseSquare
-        className="cancel"
-        onClick={() => {
-          setLoginOpen(false);
-        }}
-      ></AiFillCloseSquare>
+      <AiFillCloseSquare className="cancel"
+      onClick={() => {
+        setLoginOpen(false);
+      }}/>
       {!isSignedIn ? (
         <div>
           <form onSubmit={submitHandler}>
