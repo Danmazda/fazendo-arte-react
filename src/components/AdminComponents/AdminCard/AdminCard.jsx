@@ -1,9 +1,9 @@
 import "./AdminCard.css";
 const AdminCard = () => {
   return (
-    <section className='AdminCard'>
+    <div className='AdminCard'>
       <h2>Admin Card</h2>
-    </section>
+    </div>
   );
 };
 

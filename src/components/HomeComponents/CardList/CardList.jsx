@@ -1,7 +1,7 @@
 import "./CardList.css";
 import Card from "../Card/Card";
-import { apiRequestsProducts } from "../../services/api";
-import { useState, useEffect} from "react";
+import { apiRequestsProducts } from "../../../services/api";
+import { useState, useEffect } from "react";
 const CardList = ({ searchQuery }) => {
   const [products, setProducts] = useState([]);
   const getProducts = async () => {
@@ -17,18 +17,11 @@ const CardList = ({ searchQuery }) => {
     getProducts();
   }, []);
 
-  
   return (
     <section id="CardList">
       {products.map((pr, index) => {
         if (searchQuery.test(pr.fragrance)) {
-          return (
-            <Card
-              {...pr}
-              key={index}
-              products={products}
-            />
-          );
+          return <Card {...pr} key={index} products={products} />;
         } else {
           return <span key={index}></span>;
         }

@@ -1,6 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import Header from "./components/Header/Header";
+import Header from "./components/HeaderComponents/Header/Header";
 import Footer from "./components/Footer/Footer";
 import GlobalProvider from "./Contexts/GlobalProvider";
 import { BrowserRouter, Routes, Route } from "react-router-dom";

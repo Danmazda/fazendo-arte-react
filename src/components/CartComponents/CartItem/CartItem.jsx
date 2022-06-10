@@ -1,7 +1,7 @@
 import "./CartItem.css";
 import { useContext } from "react";
-import { CartContext } from '../../Contexts/CartProvider';
-import { cartActions } from "../../services/actions";
+import { CartContext } from '../../../Contexts/CartProvider';
+import { cartActions } from "../../../services/actions";
 import { AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
 import { BsFillTrashFill } from "react-icons/bs";
 

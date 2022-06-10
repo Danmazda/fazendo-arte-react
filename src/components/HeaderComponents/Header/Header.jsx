@@ -1,11 +1,10 @@
 import "./Header.css";
 import { useContext, useState } from "react";
-import SignupMenu from "../../components/SignupMenu/SingupMenu";
-import LoginMenu from "../../components/LoginMenu/LoginMenu";
-import { LoginContext } from "../../Contexts/LoginProvider";
+import SignupMenu from "../SignupMenu/SingupMenu";
+import LoginMenu from "../LoginMenu/LoginMenu";
+import { LoginContext } from "../../../Contexts/LoginProvider";
 import { Link } from "react-router-dom";
-import { AiOutlineSearch } from "react-icons/ai";
-const Header = ({ getSearch }) => {
+const Header = () => {
   const { isAdm } = useContext(LoginContext);
   const [loginOpen, setLoginOpen] = useState(false);
   const [signupOpen, setSignupOpen] = useState(false);
@@ -30,15 +29,7 @@ const Header = ({ getSearch }) => {
           {isAdm && <Link to="/admin">Admin</Link>}
         </ul>
       </nav>
-      <fieldset>
-        <AiOutlineSearch />
-        <input
-          type="text"
-          name="search"
-          onChange={getSearch}
-          placeholder="Pesquise por nome"
-        />
-      </fieldset>
+      
       <button
         onClick={() => {
           setLoginOpen(true);

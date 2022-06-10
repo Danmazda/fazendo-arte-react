@@ -2,8 +2,8 @@ import "./CartMenu.css";
 import { useState, useContext } from "react";
 import { BsBag } from "react-icons/bs";
 import CartItem from "../CartItem/CartItem";
-import { CartContext } from '../../Contexts/CartProvider';
-import { LoginContext } from '../../Contexts/LoginProvider';
+import { CartContext } from '../../../Contexts/CartProvider';
+import { LoginContext } from '../../../Contexts/LoginProvider';
 const CartMenu = () => {
   const { isSignedIn } = useContext(LoginContext);
   const { cart } = useContext(CartContext);

@@ -1,8 +1,8 @@
 import "./Card.css";
 import { useState, useContext } from "react";
-import { CartContext } from '../../Contexts/CartProvider';
-import { MessageContext } from '../../Contexts/MessageProvider';
-import { cartActions } from "../../services/actions";
+import { CartContext } from '../../../Contexts/CartProvider';
+import { MessageContext } from '../../../Contexts/MessageProvider';
+import { cartActions } from "../../../services/actions";
 
 const Card = ({
   fragrance,
