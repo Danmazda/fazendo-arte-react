@@ -34,6 +34,15 @@ export const apiRequestsProducts = {
       return e.response.data;
     }
   },
+  async deleteProduct(id) {
+    try {
+      const response = await api.delete(`aromatizador/delete/${id}`);
+      const {data} = response;
+      return data;
+    } catch (e) {
+      return e.response.data;
+    }
+  },
 };
 
 export const apiRequestsUsers = {

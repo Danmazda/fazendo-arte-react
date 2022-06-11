@@ -1,6 +1,7 @@
 import "./AdminList.css";
 import { apiRequestsProducts } from "../../../services/api";
 import CreateModal from "../../Modals/CreateModal/CreateModal";
+import DeleteModal from "../../Modals/DeleteModal/DeleteModal";
 import { useEffect, useState } from "react";
 import AdminCard from "../AdminCard/AdminCard";
 const AdminList = ({ searchQuery }) => {
@@ -14,6 +15,9 @@ const AdminList = ({ searchQuery }) => {
     const products = await apiRequestsProducts.getProducts();
     setProducts(products);
   };
+  const getProductToChange = (id) => {
+    setProductToChange(products.find((p) => p._id === id));
+  };
   useEffect(() => {
     getProducts();
   }, []);
@@ -21,7 +25,15 @@ const AdminList = ({ searchQuery }) => {
     <section className="AdminList">
       {products.map((pr, index) => {
         if (searchQuery.test(pr.fragrance)) {
-          return <AdminCard {...pr} key={index} />;
+          return (
+            <AdminCard
+              {...pr}
+              key={index}
+              getProductToChange={getProductToChange}
+              setDeleteOpen={setDeleteOpen}
+              setUpdateOpen={setUpdateOpen}
+            />
+          );
         } else {
           return <span key={index}></span>;
         }
@@ -37,6 +49,11 @@ const AdminList = ({ searchQuery }) => {
         createOpen={createOpen}
         setCreateOpen={setCreateOpen}
       ></CreateModal>
+      <DeleteModal
+        deleteOpen={deleteOpen}
+        setDeleteOpen={setDeleteOpen}
+        product={productToChange}
+      ></DeleteModal>
     </section>
   );
 };

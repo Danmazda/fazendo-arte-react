@@ -1,5 +1,5 @@
 import "./AdminCard.css";
-const AdminCard = ({ fragrance, description, price, image }) => {
+const AdminCard = ({ _id, fragrance, description, price, image, getProductToChange, setUpdateOpen, setDeleteOpen}) => {
   
   return (
     <div className="AdminCard">
@@ -8,7 +8,10 @@ const AdminCard = ({ fragrance, description, price, image }) => {
       <p>{description}</p>
       <p>{price.toFixed(2).replace(".", ",")}</p>
       <button>Update</button>
-      <button>Delete</button>
+      <button onClick={()=> {
+        getProductToChange(_id);
+        setDeleteOpen(true);
+      }}>Delete</button>
     </div>
   );
 };
