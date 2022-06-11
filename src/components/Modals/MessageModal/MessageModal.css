@@ -1,8 +1,9 @@
 .modal {
   opacity: 0;
-  left: 0;
+  top:1em;
+  left: 1em;
   z-index: 99;
-  position: absolute;
+  position: fixed;
   width: 30vw;
   height: 3em;
   background-color: blanchedalmond;

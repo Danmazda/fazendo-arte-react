@@ -1,0 +1,4 @@
+.AdminList{
+  display: flex;
+  flex-wrap: wrap;
+}

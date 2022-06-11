@@ -25,6 +25,15 @@ export const apiRequestsProducts = {
     }
   },
   async getProductById() {},
+  async createProduct(fragrance, description, price, image) {
+    try {
+      const response = await api.post("aromatizador/create", {fragrance, description, price, image});
+      const {data} = response;
+      return data;
+    } catch (e) {
+      return e.response.data;
+    }
+  },
 };
 
 export const apiRequestsUsers = {
