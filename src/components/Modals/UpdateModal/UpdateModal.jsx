@@ -41,7 +41,7 @@ const UpdateModal = ({ updateOpen, setUpdateOpen, product }) => {
     <>
       {updateOpen && (
         <form className="UpdateModal" onSubmit={handleSubmit}>
-          <AiFillCloseSquare
+          <AiFillCloseSquare className='cancel'
             onClick={() => {
               setUpdateOpen(false);
             }}

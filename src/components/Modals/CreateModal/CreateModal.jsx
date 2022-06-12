@@ -2,6 +2,8 @@ import "./CreateModal.css";
 import { apiRequestsProducts } from "../../../services/api";
 import { MessageContext } from "../../../Contexts/MessageProvider";
 import { useContext, useState } from "react";
+import { AiFillCloseSquare } from "react-icons/ai";
+
 const CreateModal = ({ createOpen, setCreateOpen, product }) => {
   const { showMessage } = useContext(MessageContext);
   const [fragrance, setFragrance] = useState("");
@@ -37,7 +39,14 @@ const CreateModal = ({ createOpen, setCreateOpen, product }) => {
   return (
     <>
       {createOpen && (
+        <div className="modifyModal">
         <form className="CreateModal" onSubmit={handleSubmit}>
+        <AiFillCloseSquare className="cancel"
+            onClick={() => {
+              setCreateOpen(false);
+            }}
+          />
+        <h2>Crie um Produto</h2>
           <fieldset>
             <label htmlFor="fragrance">Tipo:</label>
             <input
@@ -74,8 +83,10 @@ const CreateModal = ({ createOpen, setCreateOpen, product }) => {
               onChange={handleImageChange}
             />
           </fieldset>
-          <button type="submit">Send</button>
+          <button type="submit">Criar</button>
         </form>
+        </div>
+        
       )}
     </>
   );

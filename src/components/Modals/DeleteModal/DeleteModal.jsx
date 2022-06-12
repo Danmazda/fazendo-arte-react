@@ -8,6 +8,7 @@ const DeleteModal = ({ deleteOpen, setDeleteOpen, product }) => {
     const response = await apiRequestsProducts.deleteProduct(id);
     if (response.message === "Deleted") {
       showMessage("Deleted");
+      setDeleteOpen(false);
     } else {
       showMessage("Erro ao deletar!");
     }
@@ -15,10 +16,11 @@ const DeleteModal = ({ deleteOpen, setDeleteOpen, product }) => {
   return (
     <>
       {deleteOpen && (
-        <div className="DeleteModal">
+        <div className="DeleteModal modifyModal">
           <div className='modalContainer'>
           <h2>{`Certeza que deseja excluir ${product.fragrance}?`}</h2>
           <button
+          className='confirm'
             onClick={() => {
               deleteProduct(product._id);
             }}
@@ -29,6 +31,7 @@ const DeleteModal = ({ deleteOpen, setDeleteOpen, product }) => {
             onClick={() => {
               setDeleteOpen(false);
             }}
+            className="delete"
           >
             Não
           </button>

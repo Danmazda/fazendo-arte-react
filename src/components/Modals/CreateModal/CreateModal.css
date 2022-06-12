@@ -1,0 +1,14 @@
+.CreateModal{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background-color: burlywood;
+  padding: 1em;
+}
+.CreateModal fieldset{
+  width: 100%;
+}
+.CreateModal input{
+  width: 100%;
+}

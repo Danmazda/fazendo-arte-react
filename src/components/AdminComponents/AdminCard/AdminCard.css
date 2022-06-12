@@ -1,9 +1,12 @@
-.AdminCard{
+.AdminCard {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 0.4em;
+  text-align: center;
   border: 1px solid red;
+  width: 12em;
 }
-.AdminCard img{
+.AdminCard img {
   width: 10em;
 }

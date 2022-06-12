@@ -1,8 +1,16 @@
-.DeleteModal{
-  height: 100vh;
-  width: 100vw;
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+.modalContainer {
+  background-color: #ffffff;
+  color: black;
+  text-align: center;
+  padding: 1em;
+}
+.DeleteModal button {
+  margin: 0 1em;
+}
+.confirm:hover {
+  background-color: rgb(36, 192, 36);
+}
+.delete {
+  background-color: rgb(226, 38, 38);
 }
