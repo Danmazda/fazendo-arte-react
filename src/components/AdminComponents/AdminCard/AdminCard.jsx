@@ -7,7 +7,10 @@ const AdminCard = ({ _id, fragrance, description, price, image, getProductToChan
       <img src={image} alt="" />
       <p>{description}</p>
       <p>{price.toFixed(2).replace(".", ",")}</p>
-      <button>Update</button>
+      <button onClick={()=> {
+        getProductToChange(_id);
+        setUpdateOpen(true);
+      }}>Update</button>
       <button onClick={()=> {
         getProductToChange(_id);
         setDeleteOpen(true);

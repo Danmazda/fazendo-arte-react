@@ -2,6 +2,7 @@ import "./AdminList.css";
 import { apiRequestsProducts } from "../../../services/api";
 import CreateModal from "../../Modals/CreateModal/CreateModal";
 import DeleteModal from "../../Modals/DeleteModal/DeleteModal";
+import UpdateModal from "../../Modals/UpdateModal/UpdateModal";
 import { useEffect, useState } from "react";
 import AdminCard from "../AdminCard/AdminCard";
 const AdminList = ({ searchQuery }) => {
@@ -49,6 +50,11 @@ const AdminList = ({ searchQuery }) => {
         createOpen={createOpen}
         setCreateOpen={setCreateOpen}
       ></CreateModal>
+      <UpdateModal
+        updateOpen={updateOpen}
+        setUpdateOpen={setUpdateOpen}
+        product={productToChange}
+      />
       <DeleteModal
         deleteOpen={deleteOpen}
         setDeleteOpen={setDeleteOpen}

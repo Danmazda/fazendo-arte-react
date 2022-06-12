@@ -34,6 +34,15 @@ export const apiRequestsProducts = {
       return e.response.data;
     }
   },
+  async updateProduct(id, fragrance, description, price, image) {
+    try {
+      const response = await api.put(`aromatizador/update/${id}`, {fragrance, description, price, image});
+      const {data} = response;
+      return data;
+    } catch (e) {
+      return e.response.data;
+    }
+  },
   async deleteProduct(id) {
     try {
       const response = await api.delete(`aromatizador/delete/${id}`);
