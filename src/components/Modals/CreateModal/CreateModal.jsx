@@ -4,7 +4,7 @@ import { MessageContext } from "../../../Contexts/MessageProvider";
 import { useContext, useState } from "react";
 import { AiFillCloseSquare } from "react-icons/ai";
 
-const CreateModal = ({ createOpen, setCreateOpen, product }) => {
+const CreateModal = ({ createOpen, setCreateOpen, product, getProducts}) => {
   const { showMessage } = useContext(MessageContext);
   const [fragrance, setFragrance] = useState("");
   const [description, setDescription] = useState("");
@@ -22,6 +22,8 @@ const CreateModal = ({ createOpen, setCreateOpen, product }) => {
       showMessage("Erro ao criar produto");
     } else {
       showMessage("Produto criado com sucesso");
+      setCreateOpen(false);
+      getProducts();
     }
   };
   const handleFragranceChange = (event) => {

@@ -1,9 +1,18 @@
 import { createContext, useEffect, useState } from "react";
-
+import { apiRequestsUsers } from '../services/api';
 export const LoginContext = createContext();
 const LoginProvider = ({ children }) => {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [isAdm, setIsAdm] = useState(false);
+  const isJwtValid = async() =>{
+    const response = await apiRequestsUsers.getUserByEmail();
+    if(response.error){
+      setIsSignedIn(false);
+      localStorage.clear();
+    }else{
+      setIsSignedIn(true);
+    }
+  }
   useEffect(() => {
     if (isSignedIn && localStorage.getItem("adm")) {
       setIsAdm(true);
@@ -12,11 +21,7 @@ const LoginProvider = ({ children }) => {
     }
   }, [isSignedIn]);
   useEffect(() => {
-    if (localStorage.length !== 0) {
-      setIsSignedIn(true);
-    } else {
-      setIsSignedIn(false);
-    }
+    isJwtValid();
   }, []);
   return (
     <LoginContext.Provider

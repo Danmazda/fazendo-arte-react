@@ -2,13 +2,15 @@ import "./DeleteModal.css";
 import { apiRequestsProducts } from "../../../services/api";
 import { MessageContext } from "../../../Contexts/MessageProvider";
 import { useContext } from "react";
-const DeleteModal = ({ deleteOpen, setDeleteOpen, product }) => {
+
+const DeleteModal = ({ deleteOpen, setDeleteOpen, product, getProducts }) => {
   const { showMessage } = useContext(MessageContext);
   const deleteProduct = async (id) => {
     const response = await apiRequestsProducts.deleteProduct(id);
     if (response.message === "Deleted") {
-      showMessage("Deleted");
+      showMessage(`${product.fragrance} deletado com sucesso`);
       setDeleteOpen(false);
+      getProducts();
     } else {
       showMessage("Erro ao deletar!");
     }

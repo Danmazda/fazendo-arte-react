@@ -3,7 +3,7 @@ import { MessageContext } from "../../../Contexts/MessageProvider";
 import { useContext, useState } from "react";
 import { AiFillCloseSquare } from "react-icons/ai";
 
-const UpdateModal = ({ updateOpen, setUpdateOpen, product }) => {
+const UpdateModal = ({ updateOpen, setUpdateOpen, product, getProducts }) => {
   const { showMessage } = useContext(MessageContext);
   const [fragrance, setFragrance] = useState(product.fragrance);
   const [description, setDescription] = useState(product.description);
@@ -19,6 +19,8 @@ const UpdateModal = ({ updateOpen, setUpdateOpen, product }) => {
     );
     if(response.message === "updated"){
       showMessage(`${fragrance} atualizado!`);
+      setUpdateOpen(false);
+      getProducts();
     } else{
       showMessage(`Erro ao atualizar!`);
     }

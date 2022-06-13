@@ -18,6 +18,7 @@ const AdminList = ({ searchQuery }) => {
   const getProductToChange = (id) => {
     setProductToChange(products.find((p) => p._id === id));
   };
+  
   useEffect(() => {
     getProducts();
   }, []);
@@ -51,16 +52,19 @@ const AdminList = ({ searchQuery }) => {
       <CreateModal
         createOpen={createOpen}
         setCreateOpen={setCreateOpen}
+        getProducts={getProducts}
       ></CreateModal>
       <UpdateModal
         updateOpen={updateOpen}
         setUpdateOpen={setUpdateOpen}
         product={productToChange}
+        getProducts={getProducts}
       />
       <DeleteModal
         deleteOpen={deleteOpen}
         setDeleteOpen={setDeleteOpen}
         product={productToChange}
+        getProducts={getProducts}
       ></DeleteModal>
     </section>
   );

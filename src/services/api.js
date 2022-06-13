@@ -4,14 +4,6 @@ const api = axios.create({
   baseURL: "https://apifazendoarte-production.up.railway.app/",
 });
 
-api.interceptors.request.use(async (config) => {
-  const token = localStorage.getItem("access_token");
-  if (token) {
-    api.defaults.headers.authorization = `Bearer ${token}`;
-  }
-  return config;
-});
-
 export const apiRequestsProducts = {
   async getProducts() {
     try {
@@ -27,8 +19,13 @@ export const apiRequestsProducts = {
   async getProductById() {},
   async createProduct(fragrance, description, price, image) {
     try {
-      const response = await api.post("aromatizador/create", {fragrance, description, price, image});
-      const {data} = response;
+      const response = await api.post("aromatizador/create", {
+        fragrance,
+        description,
+        price,
+        image,
+      });
+      const { data } = response;
       return data;
     } catch (e) {
       return e.response.data;
@@ -36,8 +33,13 @@ export const apiRequestsProducts = {
   },
   async updateProduct(id, fragrance, description, price, image) {
     try {
-      const response = await api.put(`aromatizador/update/${id}`, {fragrance, description, price, image});
-      const {data} = response;
+      const response = await api.put(`aromatizador/update/${id}`, {
+        fragrance,
+        description,
+        price,
+        image,
+      });
+      const { data } = response;
       return data;
     } catch (e) {
       return e.response.data;
@@ -46,7 +48,7 @@ export const apiRequestsProducts = {
   async deleteProduct(id) {
     try {
       const response = await api.delete(`aromatizador/delete/${id}`);
-      const {data} = response;
+      const { data } = response;
       return data;
     } catch (e) {
       return e.response.data;
@@ -55,14 +57,21 @@ export const apiRequestsProducts = {
 };
 
 export const apiRequestsUsers = {
+  setToken() {
+      const token = localStorage.getItem("access_token");
+      if (token) {
+        api.defaults.headers.common['authorization'] = `Bearer ${token}`;
+      }
+  },
   async getUsers() {},
   async getUserByEmail() {
     const email = localStorage.getItem("email");
     try {
+      this.setToken();
       const response = await api.post("usuario/email", { email });
       return response.data;
     } catch (e) {
-      console.log(e.response.data);
+      return e.response.data;
     }
   },
   async UserSignIn(email, password) {
@@ -76,10 +85,7 @@ export const apiRequestsUsers = {
         localStorage.setItem("access_token", token);
         localStorage.setItem("email", emailRes);
         localStorage.setItem("adm", adm);
-        api.interceptors.request.use(async (config) => {
-          api.defaults.headers.authorization = `Bearer ${token}`;
-          return config;
-        });
+        this.setToken();
       }
     } catch (e) {
       console.log(e.response.data);

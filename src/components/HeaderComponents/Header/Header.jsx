@@ -1,13 +1,19 @@
 import "./Header.css";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import SignupMenu from "../SignupMenu/SingupMenu";
 import LoginMenu from "../LoginMenu/LoginMenu";
 import { LoginContext } from "../../../Contexts/LoginProvider";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const Header = () => {
+  const navigate = useNavigate();
   const { isAdm } = useContext(LoginContext);
   const [loginOpen, setLoginOpen] = useState(false);
   const [signupOpen, setSignupOpen] = useState(false);
+  useEffect(() => {
+    if (!isAdm) {
+      navigate("/");
+    }
+  }, [isAdm, navigate]);
   return (
     <header>
       <div className="title">
@@ -16,7 +22,9 @@ const Header = () => {
       </div>
       <nav>
         <ul>
-          <Link to="/" className='link'>Início</Link>
+          <Link to="/" className="link">
+            Início
+          </Link>
           <li>
             <a href="#Products">Produtos</a>
           </li>
@@ -26,10 +34,14 @@ const Header = () => {
           <li>
             <a href="#Mail">Contato</a>
           </li>
-          {isAdm && <Link to="/admin" className='link'>Admin</Link>}
+          {isAdm && (
+            <Link to="/admin" className="link">
+              Admin
+            </Link>
+          )}
         </ul>
       </nav>
-      
+
       <button
         onClick={() => {
           setLoginOpen(true);
