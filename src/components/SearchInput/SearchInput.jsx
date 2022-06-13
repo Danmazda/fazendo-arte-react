@@ -1,7 +1,8 @@
+import "./SearchInput.css"
 import { AiOutlineSearch } from "react-icons/ai";
 const SearchInput = ({ getSearch }) => {
   return (
-    <fieldset>
+    <fieldset className='search'>
       <AiOutlineSearch />
       <input
         type="text"

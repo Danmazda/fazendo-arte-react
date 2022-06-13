@@ -1,4 +1,4 @@
-.CreateModal{
+.formModal{
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -6,9 +6,9 @@
   background-color: burlywood;
   padding: 1em;
 }
-.CreateModal fieldset{
+.formModal fieldset{
   width: 100%;
 }
-.CreateModal input{
+.formModal input{
   width: 100%;
 }

@@ -17,20 +17,20 @@ const CartItem = ({ element }) => {
       <p>{element.product.fragrance}</p>
       <div className="cartItem__control">
         <AiOutlinePlusCircle
-          className="clickable"
+          className="plus clickable"
           onClick={() => {
             cartDispatch({ type: cartActions.ADD, id: element.product._id });
           }}
         />
         <p>{element.quantity}</p>
         <AiOutlineMinusCircle
-          className="clickable"
+          className="minus clickable"
           onClick={() => {
             cartDispatch({ type: cartActions.REMOVE, id: element.product._id });
           }}
         />
         <BsFillTrashFill
-          className="clickable"
+          className="minus clickable"
           onClick={() => {
             cartDispatch({
               type: cartActions.REMOVEALL,

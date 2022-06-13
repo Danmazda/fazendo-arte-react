@@ -2,7 +2,7 @@
   position: fixed;
   bottom: 1em;
   right: 1em;
-  background-color: aquamarine;
+  background-color: #007991;
   padding: 0.5em;
   height: 3em;
   width: 3em;
@@ -17,6 +17,7 @@
   transform: scale(1.1);
 }
 .cartMenu {
+  text-align: center;
   padding: 0.5em;
   display: flex;
   flex-direction: column;
@@ -24,7 +25,7 @@
   align-items: center;
   gap: 0.5em;
   position: fixed;
-  background-color: yellowgreen;
+  background-color: #439A86;
   right: 1em;
   bottom: 1em;
   height: 80vh;

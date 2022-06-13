@@ -1,4 +1,3 @@
-import "./UpdateModal.css";
 import { apiRequestsProducts } from "../../../services/api";
 import { MessageContext } from "../../../Contexts/MessageProvider";
 import { useContext, useState } from "react";
@@ -36,16 +35,17 @@ const UpdateModal = ({ updateOpen, setUpdateOpen, product }) => {
   const handleImageChange = (event) => {
     setImage(event.target.value);
   };
-  console.log(fragrance);
   return (
     <>
       {updateOpen && (
-        <form className="UpdateModal" onSubmit={handleSubmit}>
+        <div className="modifyModal">
+           <form className="formModal" onSubmit={handleSubmit}>
           <AiFillCloseSquare className='cancel'
             onClick={() => {
               setUpdateOpen(false);
             }}
           />
+          <h2>Atualize o produto</h2>
           <fieldset>
             <label htmlFor="fragrance">Tipo:</label>
             <input
@@ -89,6 +89,8 @@ const UpdateModal = ({ updateOpen, setUpdateOpen, product }) => {
           </fieldset>
           <button type="submit">Atualizar</button>
         </form>
+        </div>
+       
       )}
     </>
   );

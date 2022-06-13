@@ -20,9 +20,7 @@ body {
 section {
   width: 100%;
 }
-main {
-  overflow-y: scroll;
-}
+
 .Home {
   display: flex;
   flex-direction: column;

@@ -6,15 +6,14 @@ import UpdateModal from "../../Modals/UpdateModal/UpdateModal";
 import { useEffect, useState } from "react";
 import AdminCard from "../AdminCard/AdminCard";
 const AdminList = ({ searchQuery }) => {
-  console.log(document.forms);
   const [updateOpen, setUpdateOpen] = useState(false);
   const [deleteOpen, setDeleteOpen] = useState(false);
   const [createOpen, setCreateOpen] = useState(false);
   const [productToChange, setProductToChange] = useState({});
   const [products, setProducts] = useState([]);
   const getProducts = async () => {
-    const products = await apiRequestsProducts.getProducts();
-    setProducts(products);
+    const productsFetch = await apiRequestsProducts.getProducts();
+    setProducts([...productsFetch]);
   };
   const getProductToChange = (id) => {
     setProductToChange(products.find((p) => p._id === id));
@@ -24,6 +23,7 @@ const AdminList = ({ searchQuery }) => {
   }, []);
   return (
     <section className="AdminList">
+      <div className="adminContainer">
       {products.map((pr, index) => {
         if (searchQuery.test(pr.fragrance)) {
           return (
@@ -39,10 +39,12 @@ const AdminList = ({ searchQuery }) => {
           return <span key={index}></span>;
         }
       })}
+      </div>
       <button
         onClick={() => {
           setCreateOpen(true);
         }}
+        className="create"
       >
         Criar novo produto
       </button>

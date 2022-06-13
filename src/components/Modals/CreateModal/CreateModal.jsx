@@ -18,7 +18,7 @@ const CreateModal = ({ createOpen, setCreateOpen, product }) => {
       price,
       image
     );
-    if (response.message) {
+    if (response.error) {
       showMessage("Erro ao criar produto");
     } else {
       showMessage("Produto criado com sucesso");
@@ -40,7 +40,7 @@ const CreateModal = ({ createOpen, setCreateOpen, product }) => {
     <>
       {createOpen && (
         <div className="modifyModal">
-        <form className="CreateModal" onSubmit={handleSubmit}>
+        <form className="formModal" onSubmit={handleSubmit}>
         <AiFillCloseSquare className="cancel"
             onClick={() => {
               setCreateOpen(false);

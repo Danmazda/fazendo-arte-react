@@ -6,7 +6,7 @@ header {
   padding-left: 2em;
   gap: 1em;
   justify-content: space-between;
-  background-color: burlywood;
+  background-color: #deb887;
   height: 15vh;
 }
 .title{
@@ -17,12 +17,12 @@ header ul {
   gap: 1em;
 }
 
-li a {
+li a, .link {
   text-decoration: none;
   color: black;
   transition: 0.3s ease-in all;
 }
-li a:hover {
+li a:hover, .link:hover{
   transform: scale(1.1);
   border-bottom: 2px solid black;
 }

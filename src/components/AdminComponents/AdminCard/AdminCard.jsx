@@ -10,11 +10,11 @@ const AdminCard = ({ _id, fragrance, description, price, image, getProductToChan
       <button onClick={()=> {
         getProductToChange(_id);
         setUpdateOpen(true);
-      }}>Update</button>
+      }}>Atualizar</button>
       <button onClick={()=> {
         getProductToChange(_id);
         setDeleteOpen(true);
-      }}>Delete</button>
+      }}>Deletar</button>
     </div>
   );
 };

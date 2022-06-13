@@ -16,7 +16,7 @@ const Header = () => {
       </div>
       <nav>
         <ul>
-          <Link to="/">Início</Link>
+          <Link to="/" className='link'>Início</Link>
           <li>
             <a href="#Products">Produtos</a>
           </li>
@@ -26,7 +26,7 @@ const Header = () => {
           <li>
             <a href="#Mail">Contato</a>
           </li>
-          {isAdm && <Link to="/admin">Admin</Link>}
+          {isAdm && <Link to="/admin" className='link'>Admin</Link>}
         </ul>
       </nav>
       
